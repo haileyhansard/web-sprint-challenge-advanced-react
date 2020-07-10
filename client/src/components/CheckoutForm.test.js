@@ -14,4 +14,7 @@ test("form shows success message on submit with form details", () => {
     render(<CheckoutForm />);
     const submitButton = screen.getByRole('button');
     fireEvent.click(submitButton);
+    
+    const successMessage = screen.getByTestId(/successMessage/i)
+    expect(successMessage).toBeInTheDocument()
 });
