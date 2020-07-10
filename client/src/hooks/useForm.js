@@ -9,12 +9,12 @@ export const useForm = initialValue => {
     const handleChanges = (e) => {
         setValues({ ...values, [e.target.name]: e.target.value });
     };
-    console.log({ values });
+        console.log({ values });
     
-     const handleSubmit = (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
         setShowSuccessMessage(true);
     };
 
-     return [values, handleChanges, showSuccessMessage, handleSubmit];
+    return [values, handleChanges, showSuccessMessage, handleSubmit];
 }
