@@ -17,4 +17,22 @@ test("form shows success message on submit with form details", () => {
     
     const successMessage = screen.getByTestId(/successMessage/i)
     expect(successMessage).toBeInTheDocument()
+
+    const firstNameInput = screen.getByLabelText(/first name:/i)
+    fireEvent.change(firstNameInput, { target: { value: 'Hailey' }});
+
+    const lastNameInput = screen.getByLabelText(/last name:/i)
+    fireEvent.change(lastNameInput, { target: { value: 'Hansard' }});
+
+    const addressInput = screen.getByLabelText(/address:/i)
+    fireEvent.change(addressInput, { target: { value: '123 Magnolia Street' }});
+
+    const cityInput = screen.getByLabelText(/city:/i)
+    fireEvent.change(cityInput, { target: { value: 'Los Angeles' }});
+
+    const stateInput = screen.getByLabelText(/state:/i)
+    fireEvent.change(stateInput, { target: { value: 'CA' }});
+
+    const zipInput = screen.getByLabelText(/zip:/i)
+    fireEvent.change(zipInput, { target: { value: '90027' }});
 });
