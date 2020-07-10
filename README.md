@@ -30,13 +30,51 @@ Be prepared to demonstrate your understanding of this week's concepts by answeri
 
 1. Explain how to build stateful class components.
 
+To build stateful class components, you first need to declare your class, and extend the React.Component base class. Then, set up your constructor and add state. If you do add the constructor, you need to call super(); and then add state. Now you can render some UI and return the JSX.
+
 2. Describe the different phases of the component lifecycle.
+
+The 3 phases of the component lifecycle are:
+  1. Mounting: birth phase, component is built from the ground up. Constructor function is called, Render      method is invoked, ComponentDidMount gets called as well.
+  2. Updating: the growth phase, updating the component data. setState can be called to change component's state data, forcing a call to render.
+  3. Un-mounting: depth phase, removing component from screen (DOM). componentWillUnmount is called and can be used for any clean up you may need to do.
 
 3. Demonstrate an understanding of class component lifecycle methods.
 
+The Constructor Method is used to load in initial state data. It will set the component up with the data that it needs before it gets mounted to the DOM. Its great for receiving props and translating those props to state.
+
+The Render Function method is required for all class components. Its the lifeblood of every component, how things work. When triggered, the UI gets rendered to the DOM, Starts the reconciliation process and tells React what to render.
+
+ComponentDidMount is where we fetch initial data, set up any listeners/subscriptions, its similar to useEffect.
+
+ComponentWillUnmount is used to clean up event listeners/subsriptions. Saves us from memory leaks.
+
+ComponentDidUpdate is invoked immediately after updating occurs. This method isn't called for the initial render. 
+
 4. Define stateful logic.
 
+Stateful logic is logic that is built into a component. It can be a function that handles a click event, or maybe a function that sets toggle state. It is logic that usually deals with state in the component.
+
+
 5. Describe how to test a React component with React Testing Library.
+
+To test a React Component with React Testing Library:
+  - make sure to construct a new page called for example ContactForm.test.js
+  - make sure to run mpn test (its already built in to create react app, its already a dependency)
+  - make sure that you've imported { render, screen, and fireEvent } from '@testing-library/react" and also import the component ContactForm from './ContactForm' for example
+  - to build a test, refer to the documentation for React Testing Library to make sure to use the correct lingo.
+  - First, you type in the skeleton formula with two parameters, the title and a callback function(1)
+  - Then, you render the component (2)
+  - Declare a variable of the element you want to test. For example, 'const header' becuase you are testing if the header appears. (3)
+  - Set the variable equal to the method in which you want to access the element (3a)
+  - Test that the expected element is in the document (4)
+  - Look in your terminal to see if the test passes or fails.
+    
+    test('titleOfTest', () => { // 1
+      render(<ContactForm />); // 2
+      const header = screen.getByText(/Contact Form/i) // 3 and 3a
+      expect(header).toBeInTheDocument()
+    });
 
 You are expected to be able to answer questions in these areas. Your responses contribute to your Sprint Challenge grade.
 
